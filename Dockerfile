@@ -17,6 +17,9 @@ RUN wget https://www.formalms.org/download/all-downloads.html\?task\=download.se
 
 RUN unzip formalms
 COPY config.php formalms/
+# Copy the Apache configuration files.
+COPY ./conf/httpd.conf /etc/httpd/conf/
+
 RUN chown apache:apache formalms/config.php
 RUN chown apache:apache -R formalms/files
 RUN chown apache:apache formalms/plugins
